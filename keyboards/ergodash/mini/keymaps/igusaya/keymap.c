@@ -58,20 +58,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Raise
   * ,------------------------------------------------.                    ,------------------------------------------------.
-  * |  ESC |   1  |   2  |   3  |   4  |   5  |   _  |                    |   +  |   6  |   7  |   8  |   9  |   0  |  |   |
+  * |  ESC |   1  |   2  |   3  |   4  |   5  |   -  |                    |   +  |   6  |   7  |   8  |   9  |   0  |  |   |
   * |------+------+------+------+------+------+------|                    |------+------+------+------+------+------+------|
-  * |   ~  |   !  |   @  |   #  |   $  |   %  |   {  |                    |   }  | Left | Down |  Up  | Right|   :  |  "   |
+  * | MWIN | SELAL| SAVE | DESK | FIND | GREP | RESH |                    |   }  | Left | Down |  Up  | Right|   :  |  "   |
   * |------+------+------+------+------+------+------|                    |------+------+------+------+------+------+------|
-  * | Shift|   ^  |   &  |   *  |   (  |   )  | Space|                    | Enter|   N  |   M  |   <  |   >  |   /  | Shift|
+  * | Shift| UNDO | CUT  | COPY | PAST | REDO | Space|                    | Enter|   N  |   M  |   <  |   >  |   /  | Shift|
   * |-------------+------+------+------+------+------+------.      ,------+------+------+------+------+------+-------------|
-  * | Ctrl |   \  |   `  | EISU |||||||| Lower| Space|Delete|      | Bksp | Enter| Raise|||||||| Home |PageUp|PageDn|  End |
+  * | Ctrl | TABL | TABR |   | EISU |  | Lower| Space|Delete|      | Bksp | Enter| Raise|||||||| Home |PageUp|PageDn|  End |
   * ,-------------------------------------------------------.      ,-------------------------------------------------------.
   */
   [_RAISE] = LAYOUT(
-    KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_UNDS,                        KC_PLUS, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_PIPE, \
-    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_LCBR,                        KC_RCBR, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_COLN, KC_DQT , \
-    KC_LSFT, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_SPC ,                        KC_ENT , KC_N,    KC_M,    KC_LT,   KC_GT,   KC_SLSH, KC_RSFT, \
-    KC_LCTL, KC_JYEN, KC_GRV , EISU,             LOWER,   KC_SPC , KC_DEL,        KC_BSPC,KC_ENT , RAISE,            KC_HOME, KC_PGUP, KC_PGDN, KC_END   \
+     KC_ESC,   KC_1,   KC_2,  KC_3,  KC_4,  KC_5, JP_MINS,                         JP_PLUS, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_PIPE, \
+       MWIN,  SELAL,   SAVE,  DESK,  FIND,  GREP,    RESH,                         KC_RCBR, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_COLN, KC_DQT , \
+    KC_LSFT,   UNDO,    CUT,  COPY,  PAST,  REDO,  KC_SPC,                         KC_ENT , KC_N,    KC_M,    KC_LT,   KC_GT,   KC_SLSH, KC_RSFT, \
+    KC_LCTL,   TABL,   TABR,     EISU,     LOWER,  KC_SPC,  KC_DEL,        KC_BSPC,KC_ENT , RAISE,            KC_HOME, KC_PGUP, KC_PGDN, KC_END   \
   ),
 
   /* Adjust

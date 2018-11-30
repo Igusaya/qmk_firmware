@@ -87,9 +87,11 @@
 #define SAVE LCTL(KC_S)
 #define GREP LCTL(KC_G)
 #define FIND LCTL(KC_F)
-#define TABL LCTL(KC_TAB)
-#define TABR LCTL(LSFT(KC_TAB))
+#define TABR LCTL(KC_TAB)
+#define TABL LCTL(LSFT(KC_TAB))
 #define DESK LGUI(KC_D)
 #define RESH LCTL(KC_R)
+#define MWIN LALT(KC_TAB)
+#define REDO LCTL(KC_Y)
 
 #endif
