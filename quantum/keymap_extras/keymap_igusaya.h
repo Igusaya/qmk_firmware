@@ -83,7 +83,13 @@
 #define PAST LCTL(KC_V)
 #define CUT LCTL(KC_X)
 #define UNDO LCTL(KC_Z)
-#define SELALL LCTL(KC_A)
+#define SELAL LCTL(KC_A)
 #define SAVE LCTL(KC_S)
+#define GREP LCTL(KC_G)
+#define FIND LCTL(KC_F)
+#define TABL LCTL(KC_TAB)
+#define TABR LCTL(LSFT(KC_TAB))
+#define DESK LGUI(KC_D)
+#define RESH LCTL(KC_R)
 
 #endif
