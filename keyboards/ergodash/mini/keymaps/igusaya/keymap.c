@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "keymap_jp.h"
+#include "keymap_igusaya.h"
 
 extern keymap_config_t keymap_config;
 
@@ -17,9 +17,6 @@ enum custom_keycodes {
 
 // Fillers to make layering more clear
 #define _______ KC_TRNS
-#define XXXXXXX KC_NO
-#define EISU LALT(KC_GRV)
-#define CAD LCTL(LALT(KC_DEL))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
