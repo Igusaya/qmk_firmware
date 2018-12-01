@@ -91,7 +91,7 @@
 #define TABL LCTL(LSFT(KC_TAB))
 #define DESK LGUI(KC_D)
 #define RESH LCTL(KC_R)
-#define MWIN LALT(KC_TAB)
+#define MWIN LGUI(KC_TAB)
 #define REDO LCTL(KC_Y)
 
 #endif
