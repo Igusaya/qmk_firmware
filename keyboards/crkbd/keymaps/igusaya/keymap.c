@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "bootloader.h"
+#include "keymap_igusaya.h"
 #ifdef PROTOCOL_LUFA
   #include "lufa.h"
   #include "split_util.h"
@@ -39,10 +40,8 @@ enum macro_keycodes {
   KC_SAMPLEMACRO,
 };
 
-#define KC______ KC_TRNS
-#define KC_XXXXX KC_NO
-#define KC_LOWER LOWER
-#define KC_RAISE RAISE
+#define _____ KC_TRNS
+#define XXXXX KC_NO
 #define KC_RST   RESET
 #define KC_LRST  RGBRST
 #define KC_LTOG  RGB_TOG
@@ -59,42 +58,64 @@ enum macro_keycodes {
 #define KC_EISU LALT(KC_GRV)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_QWERTY] = LAYOUT_kc( \
-  //,-----------------------------------------.                ,-----------------------------------------.
-        ESC,     Q,     W,     E,     R,     T,                      Y,     U,     I,     O,     P,  BSLS,\
-  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-      CTLTB,     A,     S,     D,     F,     G,                      H,     J,     K,     L,  SCLN,  QUOT,\
-  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-       LSFT,     Z,     X,     C,     V,     B,                      N,     M,  COMM,   DOT,  SLSH,  RSFT,\
-  //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-                                  LOWER,  SPC ,   DEL,     BSPC,   ENT, RAISE \
-                              //`--------------------'  `--------------------'
+
+    /* QWERY
+     * ,-------------------------------------.                            ,------------------------------------.
+     * | ESC   |  Q  |  W  |  E  |  R  |  T  |                            |  Y  |  U  |  I  |  O  |  P  |  BS  |
+     * |-------------------------------------|                            |------------------------------------|
+     * | CTAB  |  A  |  S  |  D  |  F  |  G  |                            |  H  |  J  |  K  |  L  |  ;  |  '   |
+     * |-------------------------------------|                            |------------------------------------|
+     * | SHIFT |  Z  |  X  |  C  |  V  |  B  |                            |  N  |  M  |  ,  |  .  |  /  | EISU |
+     * ,------------------------------------------------.       ,----------------------------------------------.
+     *                           | GUI | LOWER | Space |        | Enter | RAISE | ALT |
+     *                           ,----------------------.       ,---------------------.
+     */
+      
+    [_QWERTY] = LAYOUT( \
+          KC_ESC, KC_Q, KC_W, KC_E,    KC_R,  KC_T,                      KC_Y,  KC_U,   KC_I,    KC_O,   KC_P,    KC_BSPC, \
+        KC_CTLTB, KC_A, KC_S, KC_D,    KC_F,  KC_G,                      KC_H,  KC_J,   KC_K,    KC_L,   JP_SCLN, JP_QUOT, \
+         KC_LSFT, KC_Z, KC_X, KC_C,    KC_V,  KC_B,                      KC_N,  KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_EISU, \
+                                    KC_LGUI, LOWER, KC_SPC,      KC_ENT, RAISE, KC_LALT                                    \
+    ),  
+ 
+    /* LOWER
+     *         ,-----------------------------------.                ,-----------------------------------.
+     *         |  ~  |  !  |  @  |  #  |  $  |  %  |                |  ^  |  &  |  *  |  (  |  )  |  |  |
+     *         |-----------------------------------|                |-----------------------------------|
+     *         |     |     |     |     |  _  |  -  |                |  =  |  +  |     |     |  :  |  "  |
+     *         |-----------------------------------|                |-----------------------------------|
+     *         |     |     |     |     |  {  |  [  |                |  ]  |  }  |  <  |  >  |  ?  |     |
+     *         ,---------------------------------------.        ,---------------------------------------.
+     *                           | GUI | LOWER | Space |        | Enter | RAISE | ALT |
+     *                           ,---------------------.        ,---------------------.
+     */      
+
+  [_LOWER] = LAYOUT( \
+      JP_TILD, JP_EXLM, JP_AT, JP_HASH,  JP_DLR, JP_PERC,                      JP_CIRC, JP_AMPR, JP_ASTR, JP_LPRN, JP_RPRN, JP_PIPE, \
+        XXXXX,   XXXXX, XXXXX,   XXXXX, JP_UNDS, JP_MINS,                      JP_EQL,  JP_PLUS, XXXXX,   XXXXX,   JP_COLN, JP_DQT,  \
+        XXXXX,   XXXXX, XXXXX,   XXXXX, JP_LCBR, JP_LBRC,                      JP_RBRC, JP_RCBR, KC_LT,   KC_GT,   KC_QUES, XXXXX,   \
+                                        KC_LGUI,   LOWER, KC_SPC,      KC_ENT, RAISE,   KC_LALT                                      \
   ),
 
-  [_LOWER] = LAYOUT_kc( \
-  //,-----------------------------------------.                ,-----------------------------------------.
-        ESC,  EXLM,   AT ,  HASH,   DLR,  PERC,                   CIRC,  AMPR,  ASTR,  LPRN,  RPRN,  PIPE,\
-  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-         F1,    F2,    F3,    F4,    F5,    F6,                   LEFT,  DOWN,    UP, RIGHT,  HOME,  PGUP,\
-  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-         F7,    F8,    F9,   F10,   F11,   F12,                    F16,   F17,   F18,   F19,   END,  PGDN,\
-  //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-                                  LOWER,  SPC ,   DEL,     BSPC,   ENT, RAISE \
-                              //`--------------------'  `--------------------'
-  ),
+    /* RAISE
+     * ,------------------------------------.                           ,-------------------------------------.
+     * |  ESC |  1  |  2  |  3  |  4  |  5  |                           |  6  |  7  |   8  |   9  |  0  |  \  |
+     * |------------------------------------|                           |-------------------------------------|
+     * |  F1  | F2  | F3  | F4  | F5  | F6  |                           | Left| Down|  Up  | Right|     |     |
+     * |------------------------------------|                           |-------------------------------------|
+     * |  F7  | F8  | F9  | F10 | F11 | F12 |                           | HOME| END |PageUp|PageDn| DEL |     |
+     * ,----------------------------------------------.        ,----------------------------------------------.
+     *                          | GUI | LOWER | Space |        | Enter | RAISE | ALT |
+     *                          ,---------------------.        ,---------------------.
+     */
 
-  [_RAISE] = LAYOUT_kc( \
-  //,-----------------------------------------.                ,-----------------------------------------.
-        TAB,     1,     2,     3,     4,     5,                      6,     7,     8,     9,     0,  BSPC,\
-  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-       LSFT,  EXLM,    AT,  HASH,   DLR,  PERC,                   LEFT,  DOWN,    UP, RIGHT,  PIPE,   GRV,\
-  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-       LALT,  CIRC,  AMPR,  ASTR,  LPRN,  RPRN,                   MINS,  PLUS,  LBRC,  RBRC,  BSLS,  TILD,\
-  //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-                                   EISU, LOWER,   SPC,      ENT, RAISE, ALTKN \
-                              //`--------------------'  `--------------------'
+  [_RAISE] = LAYOUT( \
+      KC_ESC,  KC_1,  KC_2,  KC_3,    KC_4,   KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   JP_YEN, \
+       KC_F1, KC_F2, KC_F3, KC_F4,   KC_F5,  KC_F6,                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXX,  XXXXX,  \
+       KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12,                      KC_HOME, KC_END,  KC_PGUP, KC_PGDN, KC_DEL, XXXXX,  \
+                                   KC_LGUI,  LOWER, KC_SPC,      KC_ENT, RAISE,   KC_LALT                                    \
   ),
-
+/*
   [_ADJUST] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
         RST,  LRST, XXXXX, XXXXX, XXXXX, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
@@ -106,6 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   GUIEI, LOWER,   SPC,      ENT, RAISE, ALTKN \
                               //`--------------------'  `--------------------'
   )
+  */
 };
 
 int RGB_current_mode;
