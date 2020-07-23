@@ -76,15 +76,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                           | GUI | LOWER | Space |        | Enter | RAISE | ALT |
      *                           ,----------------------.       ,---------------------.
      */
-      
+
     [_QWERTY] = LAYOUT( \
           KC_ESC, KC_Q, KC_W, KC_E,    KC_R,  KC_T,                      KC_Y,  KC_U,   KC_I,    KC_O,   KC_P,    KC_BSPC, \
         KC_CTLTB, KC_A, KC_S, KC_D,    KC_F,  KC_G,                      KC_H,  KC_J,   KC_K,    KC_L,   JP_SCLN, JP_QUOT, \
          KC_LSFT, KC_Z, KC_X, KC_C,    KC_V,  KC_B,                      KC_N,  KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_EISU, \
                                     KC_LGUI, LOWER, KC_SPC,      KC_ENT, RAISE, KC_LALT                                    \
-    ),  
- 
-    /* GAME 
+    ),
+
+    /* GAME
      * ,-------------------------------------.                            ,------------------------------------.
      * | ESC   |  Q  |  W  |  E  |  R  |  T  |                            |  Y  |  U  |  I  |  O  |  P  |  BS  |
      * |-------------------------------------|                            |------------------------------------|
@@ -95,15 +95,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                           | TAB | LOWER | Space |        | Enter | RAISE | ALT |
      *                           ,----------------------.       ,---------------------.
      */
-      
+
     [_GAME] = LAYOUT( \
           KC_ESC, KC_Q, KC_W, KC_E,    KC_R,  KC_T,                      KC_Y,  KC_U,   KC_I,    KC_O,   KC_P,    KC_BSPC, \
          KC_LCTL, KC_A, KC_S, KC_D,    KC_F,  KC_G,                      KC_H,  KC_J,   KC_K,    KC_L,   JP_SCLN, JP_QUOT, \
          KC_LSFT, KC_Z, KC_X, KC_C,    KC_V,  KC_B,                      KC_N,  KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_EISU, \
                                      KC_TAB, LOWER, KC_SPC,      KC_ENT, RAISE, KC_LALT                                    \
     ),
- 
-    /* MAC 
+
+    /* MAC
      * ,-------------------------------------.                            ,------------------------------------.
      * | ESC   |  Q  |  W  |  E  |  R  |  T  |                            |  Y  |  U  |  I  |  O  |  P  |  BS  |
      * |-------------------------------------|                            |------------------------------------|
@@ -114,14 +114,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                           | GUI | LOWER | Space |        | Enter | RAISE | ALT |
      *                           ,----------------------.       ,---------------------.
      */
-      
+
     [_MAC] = LAYOUT( \
           KC_ESC, KC_Q, KC_W, KC_E,    KC_R,  KC_T,                      KC_Y,  KC_U,   KC_I,    KC_O,   KC_P,    KC_BSPC, \
          KC_LGUI, KC_A, KC_S, KC_D,    KC_F,  KC_G,                      KC_H,  KC_J,   KC_K,    KC_L,   JP_SCLN, JP_QUOT, \
          KC_LSFT, KC_Z, KC_X, KC_C,    KC_V,  KC_B,                      KC_N,  KC_M,   KC_COMM, KC_DOT, KC_SLSH, LGUI(KC_SPC), \
-                                   KC_CTLTB,  LOWER, KC_SPC,    KC_ENT, RAISE,  KC_ALTKN                                    \
+                                   KC_CTLTB,  GAME_LOWER, KC_SPC,    KC_ENT, RAISE,  KC_ALTKN                                    \
     ),
- 
+
     /* LOWER
      *         ,-----------------------------------.                        ,-----------------------------------.
      *         |  ~  |  !  |  @  |  #  |  $  |  %  |                        |  ^  |  &  |  *  |  (  |  )  |  |  |
@@ -132,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *         ,-------------------------------------------.       ,--------------------------------------------.
      *                                 | GUI | LOWER | DEL |       |  BS  | RAISE | ALT |
      *                                 ,-------------------.       ,--------------------.
-     */      
+     */
 
   [_LOWER] = LAYOUT( \
       JP_TILD, JP_EXLM, JP_AT, JP_HASH,  JP_DLR, JP_PERC,                      JP_CIRC, JP_AMPR, JP_ASTR, JP_LPRN, JP_RPRN, JP_PIPE, \
@@ -159,6 +159,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_F7,   KC_F8, KC_F9, KC_F10, KC_F11, KC_F12,                      KC_HOME, KC_END,  KC_PGUP, KC_PGDN, KC_DEL, XXXXX,  \
                                    KC_LGUI,  LOWER, KC_DEL,     KC_BSPC, RAISE,   KC_LALT                                    \
   ),
+
+    /* GAME_LOWER
+     * ,------------------------------------.                           ,-------------------------------------.
+     * |  ESC |  1  |  2  |  3  |  4  |  5  |                           |  6  |  7  |   8  |   9  |  0  |  \  |
+     * |------------------------------------|                           |-------------------------------------|
+     * |  F1  |  6  |  7  |  8  |  9  |  0  |                           | Left| Down|  Up  | Right| TABL| TABR|
+     * |------------------------------------|                           |-------------------------------------|
+     * |  F7  | F8  | F9  | F10 | F11 | F12 |                           | HOME| END |PageUp|PageDn| DEL |     |
+     * ,--------------------------------------------.          ,----------------------------------------------.
+     *                          | GUI | LOWER | DEL |          |  BS  | RAISE | ALT |
+     *                          ,-------------------.          ,--------------------.
+     */
+
+  [_GAME_LOWER] = LAYOUT( \
+      KC_ESC,  KC_1,  KC_2,  KC_3,    KC_4,   KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   JP_YEN, \
+      KC_F1,   KC_6,  KC_7,  KC_8,    KC_9,  KC_0,                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, TABL,   TABR,   \
+      KC_F7,   KC_F8, KC_F9, KC_F10, KC_F11, KC_F12,                      KC_HOME, KC_END,  KC_PGUP, KC_PGDN, KC_DEL, XXXXX,  \
+                                   KC_LGUI,  LOWER, KC_DEL,     KC_BSPC, RAISE,   KC_LALT                                    \
+  ),
+
 
     /* ADJUST
      * ,------------------------------------.                           ,-------------------------------------.
@@ -285,6 +305,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
       } else {
         layer_off(_RAISE);
+        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
+      }
+      return false;
+      break;
+    case GAME_LOWER:
+      if (record->event.pressed) {
+        layer_on(_GAME_LOWER);
+        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
+      } else {
+        layer_off(_GAME_LOWER);
         update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
       }
       return false;
